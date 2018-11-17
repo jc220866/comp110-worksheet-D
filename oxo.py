@@ -24,13 +24,13 @@ class OxoBoard:
 
     def show(self):
         """ Display the current board state in the terminal. You should not need to edit this. """
-        for y in xrange(3):
+        for y in range(3):
             if y > 0:
-                print "--+---+--"
-            for x in xrange(3):
+                print("--+---+--")
+            for x in range(3):
                 if x > 0:
-                    print '|',
+                    print('|',)
 
                 # Print a space for empty (0), an O for player 1, or an X for player 2
-                print " OX"[self.get_square(x, y)],
+                print(" OX"[self.get_square(x, y)],)
             print

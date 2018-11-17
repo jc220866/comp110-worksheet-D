@@ -96,7 +96,7 @@ while not game_is_over:
 				played_move = True
 				current_player = 3 - current_player
 			else:
-				print "Illegal move"
+				print("Illegal move")
 	
 	# Check if game is over
 	winner = game_board.get_winner()
