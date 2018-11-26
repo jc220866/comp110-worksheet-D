@@ -4,6 +4,9 @@ class OxoBoard:
         # Lists are simple to call and easily mutable.
         self.board = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
+        # We initialize current turn to player 1 and change it after every turn
+        self.current_turn = 1
+
     def get_square(self, x, y):
         """ Return 0, 1 or 2 depending on the contents of the specified square. """
         return self.board[y * 3 + x]
@@ -14,7 +17,11 @@ class OxoBoard:
 
         if self.board[y * 3 + x] == 0:
             self.board[y * 3 + x] = mark
+
+            self.current_turn = mark
+
             return True
+
         else:
             return False
 
@@ -27,9 +34,13 @@ class OxoBoard:
         else:
             return True
 
-    def get_winner(self, current_turn):
+    def get_winner(self):
         """ If a player has three in a row, return 1 or 2 depending on which player.
             Otherwise, return 0. """
+
+        # pointers are used to increase readability
+        b = self.board
+        t = self.current_turn
 
         # Row - Top
         # Row - Middle
@@ -39,13 +50,6 @@ class OxoBoard:
         # Column - Right
         # Diagonal - TopLeft to BottomRight
         # Diagonal - TopRight to BottomLeft
-        # b = board, t = current_turn
-
-        # a pointer is used to increase readability of get_winner()
-        b = self.board
-
-        # another pointer for readability of get_winner()
-        t = current_turn
 
         if (b[0] == t and b[1] == t and b[2]) or \
             (b[3] == t and b[4] == t and b[5]) or \
@@ -56,7 +60,7 @@ class OxoBoard:
             (b[0] == t and b[4] == t and b[8]) or \
                 (b[2] == t and b[4] == t and b[6]):
 
-            return current_turn
+            return self.current_turn
 
         else:
             return 0
