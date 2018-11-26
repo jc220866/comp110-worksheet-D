@@ -51,14 +51,14 @@ class OxoBoard:
         # Diagonal - TopLeft to BottomRight
         # Diagonal - TopRight to BottomLeft
 
-        if (b[0] == t and b[1] == t and b[2]) or \
-            (b[3] == t and b[4] == t and b[5]) or \
-            (b[6] == t and b[7] == t and b[8]) or \
-            (b[0] == t and b[3] == t and b[6]) or \
-            (b[1] == t and b[4] == t and b[7]) or \
-            (b[2] == t and b[5] == t and b[8]) or \
-            (b[0] == t and b[4] == t and b[8]) or \
-                (b[2] == t and b[4] == t and b[6]):
+        if (b[0] == b[1] == b[2] != 0) or \
+            (b[3] == b[4] == b[5] != 0) or \
+            (b[6] == b[7] == b[8] != 0) or \
+            (b[0] == b[3] == b[6] != 0) or \
+            (b[1] == b[4] == b[7] != 0) or \
+            (b[2] == b[5] == b[8] != 0) or \
+            (b[0] == b[4] == b[8] != 0) or \
+                (b[2] == b[4] == b[6] != 0):
 
             return self.current_turn
 
